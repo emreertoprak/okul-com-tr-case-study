@@ -1,0 +1,21 @@
+version: '3.3'
+services:
+  mysql:
+    image: mysql:8.0.31
+    container_name: okul-db
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: okul!
+      MYSQL_DATABASE: okul
+      MYSQL_USER: okul_user
+      MYSQL_PASSWORD: okul_pwd!
+    networks:
+      - okul_net
+volumes:
+  mysql_data:
+networks:
+  okul_net:
+    driver: "bridge"

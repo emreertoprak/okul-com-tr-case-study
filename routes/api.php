@@ -25,8 +25,8 @@ Route::group(
         ]
     ],
     function () {
-        Route::post('/login', [AuthController::class, 'login']);
-        Route::post('/user', [UserController::class, 'store']);
+        Route::post('login', [AuthController::class, 'login']);
+        Route::post('user', [UserController::class, 'store']);
     }
 );
 
@@ -37,7 +37,7 @@ Route::group(
         ]
     ],
     function () {
-        Route::get('/offer', [OfferController::class, 'index']);
+        Route::get('offer', [OfferController::class, 'index']);
         Route::put('offer/{id}', [OfferController::class, 'updateById']);
         Route::post('school', [SchoolController::class, 'store']);
         Route::get('user', [UserController::class, 'index']);
@@ -51,7 +51,7 @@ Route::group(
         ]
     ],
     function () {
-        Route::post('/offer', [OfferController::class, 'store']);
+        Route::post('offer', [OfferController::class, 'store']);
         Route::post('school', [SchoolController::class, 'store']);
         Route::get('school', [SchoolController::class, 'index']);
     }
