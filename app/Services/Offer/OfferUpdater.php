@@ -16,20 +16,19 @@ class OfferUpdater
         $this->offerRepository = $offerRepository;
     }
 
-    public function updateById(Request $request,$id)
+    public function updateById(Request $request, $id)
     {
-        $data = $request->only('status');// we wanna update only status column
+        $data = $request->only('status'); // we wanna update only status column
         $offer = $this->offerRepository->find($id);
         if ($offer) {
             $user = $offer->user;
 
             if (array_key_exists('status', $data) && $data['status'] === 'approved') {
-                $user->notify(new SendOfferApprovalNotification($offer));
+                $user->notify(new SendOfferApprovalNotification());
             }
-        }
-        else{
+        } else {
             throw new OfferException('Offer not found for that id');
         }
-        return $this->offerRepository->update($id,$data);
+        return $this->offerRepository->update($id, $data);
     }
 }
